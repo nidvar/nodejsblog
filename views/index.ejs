@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="center width">
+        <%- include('./partials/search') %>
+        <% data.forEach((post)=>{%>
+            <div class="box border-bottom">
+                <a href="/post/<%= post._id %>">
+                    <h4><%= post.title %></h4>
+                    <p><%= post.blurb %></p>
+                </a>
+            </div>
+        <%})%>
+
+        <div class="center text-center margin-top">
+            <button id="previousButton"><a id="previousLink"><----</a></button>
+            <button id="nextButton"><a id="nextLink">----></a></button>
+        </div>
+
+    </div>
+</body>
+<script defer>
+
+    const dataConst = <%=data.length%>;
+    const currentPageConst = <%=currentPage%>;
+    const lastPageConst = <%=lastPage%>;
+
+    if (currentPageConst == 1){
+        document.getElementById('previousButton').disabled = true;
+    }else{
+        document.getElementById('previousLink').href="/?page=<%= previousPage %>"
+    }
+
+    if(currentPageConst == lastPageConst){
+        document.getElementById('nextButton').disabled = true;
+    }else{
+        document.getElementById('nextLink').href="/?page=<%= nextPage %>"
+    }
+
+</script>
+</html>

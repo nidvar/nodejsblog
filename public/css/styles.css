@@ -1,0 +1,85 @@
+.box{
+    margin:10px;
+    padding:5px;
+}
+
+.flex{
+    display:flex;
+}
+
+.center{
+    margin:auto;
+}
+
+.medium-width{
+    width:65%
+}
+
+.width{
+    width:50%;
+}
+
+.small-width{
+    width:30%;
+}
+
+.wide-width{
+    width:80%;
+}
+
+.text-center{
+    text-align:center;
+}
+
+.border-bottom{
+    border-bottom: 1px solid lightgrey;
+}
+
+.azure{
+    background-color: azure;
+}
+
+.set-small-width{
+    width:200px;
+}
+
+button{
+    cursor: pointer
+}
+
+a, a:visited, a:hover, a:active {
+    color: inherit;
+    text-decoration: none;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    margin:15px;
+}
+
+.margin-top{
+    margin-top:40px;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+    .width{
+        width:90%;
+    }
+    
+    .small-width{
+        width:90%;
+    }
+    
+    .wide-width{
+        width:90%;
+    }
+}
