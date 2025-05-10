@@ -8,8 +8,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "app.js",
-    "dev": "nodemon app.js"
+    "start": "server/app.js",
+    "dev": "nodemon server/app.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
