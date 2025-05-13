@@ -1,0 +1,19 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="center margin-top width">
+        <h3><%= data.title %></h3>
+        <p><%= data.body %></p>
+        <button id="backButton">BACK</button>
+    </div>
+</body>
+<script>
+document.getElementById('backButton').addEventListener('click', ()=>{
+    history.back();
+})
+</script>
+</html>

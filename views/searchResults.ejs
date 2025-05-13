@@ -1,0 +1,19 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="center margin-top width">
+        <% data.forEach((data)=>{%>
+            <div class="box border-bottom">
+                <a href="/post/<%= data._id %>">
+                    <h4><%= data.title %></h4>
+                    <p><%= data.blurb %></p>
+                </a>
+            </div>
+        <%})%>
+    </div>
+</body>
+</html>
