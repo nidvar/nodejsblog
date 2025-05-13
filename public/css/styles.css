@@ -3,6 +3,35 @@
     padding:5px;
 }
 
+.red{
+    color:red;
+}
+
+.right{
+    float:right;
+}
+
+.right-text{
+    text-align:right;
+}
+
+.bold{
+    font-weight:bold;
+}
+
+.light{
+    font-weight:lighter;
+}
+
+.smallfont{
+    font-size:14px;
+}
+
+.textarea{
+    width:100%;
+    min-height:250px;
+}
+
 .flex{
     display:flex;
 }
@@ -35,8 +64,14 @@
     border-bottom: 1px solid lightgrey;
 }
 
-.azure{
-    background-color: azure;
+.navbar{
+    margin-bottom:15px;
+}
+
+.navitem{
+    border:1px solid lightgrey;
+    padding:10px;
+    border-radius:4px;
 }
 
 .set-small-width{
