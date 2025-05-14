@@ -65,11 +65,11 @@ router.get('', async (req, res)=>{
                 y.push('......');
                 blurb = y.join(' ');
             }else{
-                blurb = x.join(' ')
+                blurb = x.join(' ');
             }
             const shallowCopy = Object.assign({}, item);
             shallowCopy.blurb = blurb;
-            shallowCopy.date = date
+            shallowCopy.date = date;
             data.push(shallowCopy);
         });
         let layout = pickLayout(req.cookies.token);
@@ -106,7 +106,13 @@ router.post('/search', async (req, res)=>{
             data[0] = {title:'No results'};
         }else{
             data = results;
-        }
+            data.forEach((item)=>{
+                let dateObject = JSON.stringify(item.createdAt);
+                let dateString = dateObject.split('T');
+                let date = dateString[0].split('"')[1];
+                item.date = date;
+            })
+        };
         let layout = pickLayout(req.cookies.token);
         let username = await displayUsername(req.cookies);
         res.render('searchResults', {data, layout, username});
@@ -170,7 +176,7 @@ router.post('/register', async (req, res)=>{
         try{
             const emailExists = await User.findOne({email:email});
             const usernameExists = await User.findOne({username:username});
-            if(!emailExists && !usernameExists){
+            if(!emailExists && !usernameExists && req.body.password.length > 3){
                 await User.create(
                     {
                         username: username, 
@@ -181,7 +187,7 @@ router.post('/register', async (req, res)=>{
                 );
                 res.render('message', {message:'Registration Successful'});
             }else{
-                registerError = 'Invalid email / Username';
+                registerError = 'Invalid email / Username / Password';
                 res.render('register', {registerError});
             }
         }catch(error){
@@ -235,6 +241,22 @@ router.post('/create', async (req, res)=>{
     }catch(error){
         console.log(error);
     }
+});
+
+router.get('/edit/:_id', async (req, res)=>{
+    let username = await displayUsername(req.cookies);
+    const post = await Post.findOne({_id:req.params._id});
+    res.render('edit', {layout: '../views/layouts/admin', username, post});
+})
+
+router.post('/edit/:_id', async (req, res)=>{
+    await Post.updateOne({ _id: req.params._id }, {$set: {body:req.body.body, title:req.body.title}});
+    res.redirect('/');
+})
+
+router.post('/delete', async (req, res)=>{
+    await Post.deleteOne({ _id: req.body._id});
+    res.redirect('/');
 });
 
 router.get('/message', (req, res) => {
