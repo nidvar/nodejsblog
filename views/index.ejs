@@ -6,17 +6,23 @@
 </head>
 <body>
     <div class="center width">
+        <div class="center text-center navitem width">
+            <p>Simple fullstack app with Node and MongoDB</p>
+            <p>Login, create and delete notes</p>
+        </div>
         <%- include('./partials/search') %>
         <% data.forEach((post)=>{%>
-            <div class="box border-bottom">
+            <div class="border-bottom">
                 <a href="/post/<%= post._id %>">
                     <h4><%= post.title %></h4>
-                    <p><%= post.blurb %></p>
-                    <p class="right-text"><span class="bold smallfont"><%= post.username %></span> <span class="light smallfont"> - <%= post.date %></span></p>
+                    <p class="no-margin"><%= post.blurb %></p>
+                    <p class="right-text no-top-margin">
+                        <span class="bold smallfont"><%= post.username %></span>
+                        <span class="light smallfont"> - <%= post.date %></span>
+                    </p>
                 </a>
             </div>
         <%})%>
-
         <div class="center text-center margin-top">
             <button id="previousButton"><a id="previousLink"><----</a></button>
             <button id="nextButton"><a id="nextLink">----></a></button>
