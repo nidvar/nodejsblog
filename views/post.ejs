@@ -8,12 +8,38 @@
     <div class="center margin-top width">
         <h3><%= data.title %></h3>
         <p><%= data.body %></p>
+        <% if (data.username === username) { %>
+            <button id="delete">DELETE POST</a></button>
+            <div id="delete-confirm">
+                <p class="red">Are you sure? This cannot be undone.</p>
+                <button id="cancel">CANCEL</button>
+                <form action="/delete" method="POST">
+                    <button name="_id" value="<%= data._id%>" type="submit">DELETE POST</button>
+                </form>
+            </div>
+            <button><a href="/edit/<%= data._id%>">EDIT POST</a></button>
+        <% } %>
+    </div>
+    <div class="center margin-top width">
         <button id="backButton">BACK</button>
     </div>
 </body>
 <script>
-document.getElementById('backButton').addEventListener('click', ()=>{
-    history.back();
-})
+    if(document.getElementById('delete')){
+        document.getElementById('delete-confirm').style.display = 'none';
+
+        document.getElementById('delete').addEventListener('click', ()=>{
+        document.getElementById('delete-confirm').style.display = 'block';
+        });
+
+        document.getElementById('cancel').addEventListener('click', ()=>{
+        document.getElementById('delete-confirm').style.display = 'none';
+        });
+    }
+
+    document.getElementById('backButton').addEventListener('click', ()=>{
+        console.log('back !!!')
+        history.back();
+    });
 </script>
 </html>
