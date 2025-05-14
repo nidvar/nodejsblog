@@ -11,6 +11,10 @@
                 <a href="/post/<%= data._id %>">
                     <h4><%= data.title %></h4>
                     <p><%= data.blurb %></p>
+                    <p class="right-text no-top-margin">
+                        <span class="bold smallfont"><%= data.username %></span>
+                        <span class="light smallfont"> - <%= data.date %></span>
+                    </p>
                 </a>
             </div>
         <%})%>
