@@ -27,6 +27,14 @@
     font-size:14px;
 }
 
+.no-margin{
+    margin:0;
+}
+
+.no-top-margin{
+    margin-top:0;
+}
+
 .textarea{
     width:100%;
     min-height:250px;
